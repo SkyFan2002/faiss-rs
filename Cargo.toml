@@ -18,8 +18,7 @@ static = ["faiss-sys/static"]
 status = "passively-maintained"
 
 [dependencies.faiss-sys]
-version = "0.6.1"
-path = "faiss-sys"
+path = "./faiss-sys"
 
 [package.metadata.docs.rs]
 features = ["gpu"]

@@ -7,6 +7,7 @@ use faiss_sys::*;
 use std::ffi::CString;
 use std::os::raw::c_int;
 use std::ptr;
+use std::ptr::null_mut;
 
 pub use super::io_flags::IoFlags;
 
@@ -17,10 +18,10 @@ pub use super::io_flags::IoFlags;
 /// This function returns an error if the description contains any byte with the value `\0` (since
 /// it cannot be converted to a C string), or if the internal index writing operation fails.
 pub fn write_index<I, P>(index: &I, file_name: P) -> Result<()>
-where
-    I: NativeIndex,
-    I: CpuIndex,
-    P: AsRef<str>,
+    where
+        I: NativeIndex,
+        I: CpuIndex,
+        P: AsRef<str>,
 {
     unsafe {
         let f = file_name.as_ref();
@@ -31,6 +32,16 @@ where
     }
 }
 
+pub fn seralize(index: &IndexImpl) -> Result<Vec<u8>> {
+    unsafe {
+        let mut size = 0;
+        let mut bytes = null_mut();
+        faiss_try(seralize_index(index.inner_ptr(), &mut bytes, &mut size))?;
+        let bytes = Vec::from_raw_parts(bytes as *mut u8, size, size);
+        Ok(bytes)
+    }
+}
+
 /// Read an index from a file.
 ///
 /// # Error
@@ -38,8 +49,8 @@ where
 /// This function returns an error if the description contains any byte with the value `\0` (since
 /// it cannot be converted to a C string), or if the internal index reading operation fails.
 pub fn read_index<P>(file_name: P) -> Result<IndexImpl>
-where
-    P: AsRef<str>,
+    where
+        P: AsRef<str>,
 {
     unsafe {
         let f = file_name.as_ref();
@@ -54,6 +65,16 @@ where
     }
 }
 
+pub fn deserialize(bytes: &[u8]) -> Result<IndexImpl> {
+    unsafe {
+        let size = bytes.len() as usize;
+        let bytes = bytes.as_ptr() as *const i8;
+        let mut inner = null_mut();
+        faiss_try(deserialize_index(bytes, size, &mut inner))?;
+        Ok(IndexImpl::from_inner_ptr(inner))
+    }
+}
+
 /// Read an index from a file with I/O flags.
 ///
 /// You can memory map some index types with this.
@@ -63,8 +84,8 @@ where
 /// This function returns an error if the description contains any byte with the value `\0` (since
 /// it cannot be converted to a C string), or if the internal index reading operation fails.
 pub fn read_index_with_flags<P>(file_name: P, io_flags: IoFlags) -> Result<IndexImpl>
-where
-    P: AsRef<str>,
+    where
+        P: AsRef<str>,
 {
     unsafe {
         let f = file_name.as_ref();
@@ -83,7 +104,8 @@ where
 mod tests {
     use super::*;
     use crate::index::flat::FlatIndex;
-    use crate::index::Index;
+    use crate::index::{Index, UpcastIndex};
+
     const D: u32 = 8;
 
     #[test]
@@ -105,6 +127,24 @@ mod tests {
         let index = read_index(&filename).unwrap();
         assert_eq!(index.ntotal(), 5);
         ::std::fs::remove_file(&filepath).unwrap();
+    }
+
+    #[test]
+    fn seralize_deseralize() {
+        let mut index = FlatIndex::new_l2(D).unwrap();
+        assert_eq!(index.d(), D);
+        assert_eq!(index.ntotal(), 0);
+        let some_data = &[
+            7.5_f32, -7.5, 7.5, -7.5, 7.5, 7.5, 7.5, 7.5, -1., 1., 1., 1., 1., 1., 1., -1., 4.,
+            -4., -8., 1., 1., 2., 4., -1., 8., 8., 10., -10., -10., 10., -10., 10., 16., 16., 32.,
+            25., 20., 20., 40., 15.,
+        ];
+        index.add(some_data).unwrap();
+        assert_eq!(index.ntotal(), 5);
+
+        let bytes = seralize(&index.upcast()).unwrap();
+        let index = deserialize(&bytes).unwrap();
+        assert_eq!(index.ntotal(), 5);
     }
 
     #[test]
