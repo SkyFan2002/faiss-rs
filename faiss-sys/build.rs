@@ -1,4 +1,5 @@
 fn main() {
+    println!("cargo:warning=build script is running");
     #[cfg(feature = "static")]
     static_link_faiss();
     #[cfg(not(feature = "static"))]
@@ -16,6 +17,7 @@ fn static_link_faiss() {
         .define("BUILD_TESTING", "OFF")
         .very_verbose(true);
     let dst = cfg.build();
+    println!("cargo:warning={:?}", dst);
     let faiss_location = dst.join("lib");
     let faiss_c_location = dst.join("build/c_api");
     println!(
