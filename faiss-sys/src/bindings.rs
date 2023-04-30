@@ -17,6 +17,10 @@ pub const __USE_POSIX199506: u32 = 1;
 pub const __USE_XOPEN2K: u32 = 1;
 pub const __USE_XOPEN2K8: u32 = 1;
 pub const _ATFILE_SOURCE: u32 = 1;
+pub const __WORDSIZE: u32 = 64;
+pub const __WORDSIZE_TIME64_COMPAT32: u32 = 1;
+pub const __SYSCALL_WORDSIZE: u32 = 64;
+pub const __TIMESIZE: u32 = 64;
 pub const __USE_MISC: u32 = 1;
 pub const __USE_ATFILE: u32 = 1;
 pub const __USE_FORTIFY_LEVEL: u32 = 0;
@@ -24,31 +28,31 @@ pub const __GLIBC_USE_DEPRECATED_GETS: u32 = 0;
 pub const __GLIBC_USE_DEPRECATED_SCANF: u32 = 0;
 pub const _STDC_PREDEF_H: u32 = 1;
 pub const __STDC_IEC_559__: u32 = 1;
+pub const __STDC_IEC_60559_BFP__: u32 = 201404;
 pub const __STDC_IEC_559_COMPLEX__: u32 = 1;
+pub const __STDC_IEC_60559_COMPLEX__: u32 = 201404;
 pub const __STDC_ISO_10646__: u32 = 201706;
 pub const __GNU_LIBRARY__: u32 = 6;
 pub const __GLIBC__: u32 = 2;
-pub const __GLIBC_MINOR__: u32 = 31;
+pub const __GLIBC_MINOR__: u32 = 35;
 pub const _SYS_CDEFS_H: u32 = 1;
 pub const __glibc_c99_flexarr_available: u32 = 1;
-pub const __WORDSIZE: u32 = 64;
-pub const __WORDSIZE_TIME64_COMPAT32: u32 = 1;
-pub const __SYSCALL_WORDSIZE: u32 = 64;
-pub const __LONG_DOUBLE_USES_FLOAT128: u32 = 0;
+pub const __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI: u32 = 0;
 pub const __HAVE_GENERIC_SELECTION: u32 = 1;
 pub const __GLIBC_USE_LIB_EXT2: u32 = 0;
 pub const __GLIBC_USE_IEC_60559_BFP_EXT: u32 = 0;
 pub const __GLIBC_USE_IEC_60559_BFP_EXT_C2X: u32 = 0;
+pub const __GLIBC_USE_IEC_60559_EXT: u32 = 0;
 pub const __GLIBC_USE_IEC_60559_FUNCS_EXT: u32 = 0;
 pub const __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X: u32 = 0;
 pub const __GLIBC_USE_IEC_60559_TYPES_EXT: u32 = 0;
 pub const _BITS_TYPES_H: u32 = 1;
-pub const __TIMESIZE: u32 = 64;
 pub const _BITS_TYPESIZES_H: u32 = 1;
 pub const __OFF_T_MATCHES_OFF64_T: u32 = 1;
 pub const __INO_T_MATCHES_INO64_T: u32 = 1;
 pub const __RLIM_T_MATCHES_RLIM64_T: u32 = 1;
 pub const __STATFS_MATCHES_STATFS64: u32 = 1;
+pub const __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64: u32 = 1;
 pub const __FD_SETSIZE: u32 = 1024;
 pub const _BITS_TIME64_H: u32 = 1;
 pub const _BITS_WCHAR_H: u32 = 1;
@@ -117,21 +121,6 @@ pub const TMP_MAX: u32 = 238328;
 pub const FILENAME_MAX: u32 = 4096;
 pub const L_ctermid: u32 = 9;
 pub const FOPEN_MAX: u32 = 16;
-pub const FAISS_IO_FLAG_MMAP: u32 = 1;
-pub const FAISS_IO_FLAG_READ_ONLY: u32 = 2;
-pub const _STDLIB_H: u32 = 1;
-pub const WNOHANG: u32 = 1;
-pub const WUNTRACED: u32 = 2;
-pub const WSTOPPED: u32 = 2;
-pub const WEXITED: u32 = 4;
-pub const WCONTINUED: u32 = 8;
-pub const WNOWAIT: u32 = 16777216;
-pub const __WNOTHREAD: u32 = 536870912;
-pub const __WALL: u32 = 1073741824;
-pub const __WCLONE: u32 = 2147483648;
-pub const __ENUM_IDTYPE_T: u32 = 1;
-pub const __W_CONTINUED: u32 = 65535;
-pub const __WCOREFLAG: u32 = 128;
 pub const __HAVE_FLOAT128: u32 = 0;
 pub const __HAVE_DISTINCT_FLOAT128: u32 = 0;
 pub const __HAVE_FLOAT64X: u32 = 1;
@@ -148,6 +137,20 @@ pub const __HAVE_DISTINCT_FLOAT32X: u32 = 0;
 pub const __HAVE_DISTINCT_FLOAT64X: u32 = 0;
 pub const __HAVE_DISTINCT_FLOAT128X: u32 = 0;
 pub const __HAVE_FLOATN_NOT_TYPEDEF: u32 = 0;
+pub const FAISS_IO_FLAG_MMAP: u32 = 1;
+pub const FAISS_IO_FLAG_READ_ONLY: u32 = 2;
+pub const _STDLIB_H: u32 = 1;
+pub const WNOHANG: u32 = 1;
+pub const WUNTRACED: u32 = 2;
+pub const WSTOPPED: u32 = 2;
+pub const WEXITED: u32 = 4;
+pub const WCONTINUED: u32 = 8;
+pub const WNOWAIT: u32 = 16777216;
+pub const __WNOTHREAD: u32 = 536870912;
+pub const __WALL: u32 = 1073741824;
+pub const __WCLONE: u32 = 2147483648;
+pub const __W_CONTINUED: u32 = 65535;
+pub const __WCOREFLAG: u32 = 128;
 pub const __ldiv_t_defined: u32 = 1;
 pub const __lldiv_t_defined: u32 = 1;
 pub const RAND_MAX: u32 = 2147483647;
@@ -174,7 +177,6 @@ pub const BYTE_ORDER: u32 = 1234;
 pub const _BITS_BYTESWAP_H: u32 = 1;
 pub const _BITS_UINTN_IDENTITY_H: u32 = 1;
 pub const _SYS_SELECT_H: u32 = 1;
-pub const __FD_ZERO_STOS: &[u8; 6usize] = b"stosq\0";
 pub const __sigset_t_defined: u32 = 1;
 pub const __timeval_defined: u32 = 1;
 pub const _STRUCT_TIMESPEC: u32 = 1;
@@ -310,6 +312,7 @@ pub type __id_t = ::std::os::raw::c_uint;
 pub type __time_t = ::std::os::raw::c_long;
 pub type __useconds_t = ::std::os::raw::c_uint;
 pub type __suseconds_t = ::std::os::raw::c_long;
+pub type __suseconds64_t = ::std::os::raw::c_long;
 pub type __daddr_t = ::std::os::raw::c_int;
 pub type __key_t = ::std::os::raw::c_int;
 pub type __clockid_t = ::std::os::raw::c_int;
@@ -593,6 +596,985 @@ extern "C" {
         arg1: *mut FaissParameterSpace,
         arg2: *const ::std::os::raw::c_char,
         arg3: *mut *mut FaissParameterRange,
+    ) -> ::std::os::raw::c_int;
+}
+pub type va_list = __builtin_va_list;
+pub type __gnuc_va_list = __builtin_va_list;
+#[repr(C)]
+#[derive(Copy, Clone)]
+pub struct __mbstate_t {
+    pub __count: ::std::os::raw::c_int,
+    pub __value: __mbstate_t__bindgen_ty_1,
+}
+#[repr(C)]
+#[derive(Copy, Clone)]
+pub union __mbstate_t__bindgen_ty_1 {
+    pub __wch: ::std::os::raw::c_uint,
+    pub __wchb: [::std::os::raw::c_char; 4usize],
+}
+#[test]
+fn bindgen_test_layout___mbstate_t__bindgen_ty_1() {
+    const UNINIT: ::std::mem::MaybeUninit<__mbstate_t__bindgen_ty_1> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<__mbstate_t__bindgen_ty_1>(),
+        4usize,
+        concat!("Size of: ", stringify!(__mbstate_t__bindgen_ty_1))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<__mbstate_t__bindgen_ty_1>(),
+        4usize,
+        concat!("Alignment of ", stringify!(__mbstate_t__bindgen_ty_1))
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__wch) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(__mbstate_t__bindgen_ty_1),
+            "::",
+            stringify!(__wch)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__wchb) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(__mbstate_t__bindgen_ty_1),
+            "::",
+            stringify!(__wchb)
+        )
+    );
+}
+#[test]
+fn bindgen_test_layout___mbstate_t() {
+    const UNINIT: ::std::mem::MaybeUninit<__mbstate_t> = ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<__mbstate_t>(),
+        8usize,
+        concat!("Size of: ", stringify!(__mbstate_t))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<__mbstate_t>(),
+        4usize,
+        concat!("Alignment of ", stringify!(__mbstate_t))
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__count) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(__mbstate_t),
+            "::",
+            stringify!(__count)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__value) as usize - ptr as usize },
+        4usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(__mbstate_t),
+            "::",
+            stringify!(__value)
+        )
+    );
+}
+#[repr(C)]
+#[derive(Copy, Clone)]
+pub struct _G_fpos_t {
+    pub __pos: __off_t,
+    pub __state: __mbstate_t,
+}
+#[test]
+fn bindgen_test_layout__G_fpos_t() {
+    const UNINIT: ::std::mem::MaybeUninit<_G_fpos_t> = ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<_G_fpos_t>(),
+        16usize,
+        concat!("Size of: ", stringify!(_G_fpos_t))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<_G_fpos_t>(),
+        8usize,
+        concat!("Alignment of ", stringify!(_G_fpos_t))
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__pos) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_G_fpos_t),
+            "::",
+            stringify!(__pos)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__state) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_G_fpos_t),
+            "::",
+            stringify!(__state)
+        )
+    );
+}
+pub type __fpos_t = _G_fpos_t;
+#[repr(C)]
+#[derive(Copy, Clone)]
+pub struct _G_fpos64_t {
+    pub __pos: __off64_t,
+    pub __state: __mbstate_t,
+}
+#[test]
+fn bindgen_test_layout__G_fpos64_t() {
+    const UNINIT: ::std::mem::MaybeUninit<_G_fpos64_t> = ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<_G_fpos64_t>(),
+        16usize,
+        concat!("Size of: ", stringify!(_G_fpos64_t))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<_G_fpos64_t>(),
+        8usize,
+        concat!("Alignment of ", stringify!(_G_fpos64_t))
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__pos) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_G_fpos64_t),
+            "::",
+            stringify!(__pos)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__state) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_G_fpos64_t),
+            "::",
+            stringify!(__state)
+        )
+    );
+}
+pub type __fpos64_t = _G_fpos64_t;
+pub type __FILE = _IO_FILE;
+pub type FILE = [u64; 27usize];
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct _IO_marker {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct _IO_codecvt {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct _IO_wide_data {
+    _unused: [u8; 0],
+}
+pub type _IO_lock_t = ::std::os::raw::c_void;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct _IO_FILE {
+    pub _flags: ::std::os::raw::c_int,
+    pub _IO_read_ptr: *mut ::std::os::raw::c_char,
+    pub _IO_read_end: *mut ::std::os::raw::c_char,
+    pub _IO_read_base: *mut ::std::os::raw::c_char,
+    pub _IO_write_base: *mut ::std::os::raw::c_char,
+    pub _IO_write_ptr: *mut ::std::os::raw::c_char,
+    pub _IO_write_end: *mut ::std::os::raw::c_char,
+    pub _IO_buf_base: *mut ::std::os::raw::c_char,
+    pub _IO_buf_end: *mut ::std::os::raw::c_char,
+    pub _IO_save_base: *mut ::std::os::raw::c_char,
+    pub _IO_backup_base: *mut ::std::os::raw::c_char,
+    pub _IO_save_end: *mut ::std::os::raw::c_char,
+    pub _markers: *mut _IO_marker,
+    pub _chain: *mut _IO_FILE,
+    pub _fileno: ::std::os::raw::c_int,
+    pub _flags2: ::std::os::raw::c_int,
+    pub _old_offset: __off_t,
+    pub _cur_column: ::std::os::raw::c_ushort,
+    pub _vtable_offset: ::std::os::raw::c_schar,
+    pub _shortbuf: [::std::os::raw::c_char; 1usize],
+    pub _lock: *mut _IO_lock_t,
+    pub _offset: __off64_t,
+    pub _codecvt: *mut _IO_codecvt,
+    pub _wide_data: *mut _IO_wide_data,
+    pub _freeres_list: *mut _IO_FILE,
+    pub _freeres_buf: *mut ::std::os::raw::c_void,
+    pub __pad5: usize,
+    pub _mode: ::std::os::raw::c_int,
+    pub _unused2: [::std::os::raw::c_char; 20usize],
+}
+#[test]
+fn bindgen_test_layout__IO_FILE() {
+    const UNINIT: ::std::mem::MaybeUninit<_IO_FILE> = ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<_IO_FILE>(),
+        216usize,
+        concat!("Size of: ", stringify!(_IO_FILE))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<_IO_FILE>(),
+        8usize,
+        concat!("Alignment of ", stringify!(_IO_FILE))
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._flags) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_flags)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._IO_read_ptr) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_IO_read_ptr)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._IO_read_end) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_IO_read_end)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._IO_read_base) as usize - ptr as usize },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_IO_read_base)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._IO_write_base) as usize - ptr as usize },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_IO_write_base)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._IO_write_ptr) as usize - ptr as usize },
+        40usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_IO_write_ptr)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._IO_write_end) as usize - ptr as usize },
+        48usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_IO_write_end)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._IO_buf_base) as usize - ptr as usize },
+        56usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_IO_buf_base)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._IO_buf_end) as usize - ptr as usize },
+        64usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_IO_buf_end)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._IO_save_base) as usize - ptr as usize },
+        72usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_IO_save_base)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._IO_backup_base) as usize - ptr as usize },
+        80usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_IO_backup_base)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._IO_save_end) as usize - ptr as usize },
+        88usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_IO_save_end)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._markers) as usize - ptr as usize },
+        96usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_markers)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._chain) as usize - ptr as usize },
+        104usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_chain)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._fileno) as usize - ptr as usize },
+        112usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_fileno)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._flags2) as usize - ptr as usize },
+        116usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_flags2)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._old_offset) as usize - ptr as usize },
+        120usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_old_offset)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._cur_column) as usize - ptr as usize },
+        128usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_cur_column)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._vtable_offset) as usize - ptr as usize },
+        130usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_vtable_offset)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._shortbuf) as usize - ptr as usize },
+        131usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_shortbuf)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._lock) as usize - ptr as usize },
+        136usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_lock)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._offset) as usize - ptr as usize },
+        144usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_offset)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._codecvt) as usize - ptr as usize },
+        152usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_codecvt)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._wide_data) as usize - ptr as usize },
+        160usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_wide_data)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._freeres_list) as usize - ptr as usize },
+        168usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_freeres_list)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._freeres_buf) as usize - ptr as usize },
+        176usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_freeres_buf)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__pad5) as usize - ptr as usize },
+        184usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(__pad5)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._mode) as usize - ptr as usize },
+        192usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_mode)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr)._unused2) as usize - ptr as usize },
+        196usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(_IO_FILE),
+            "::",
+            stringify!(_unused2)
+        )
+    );
+}
+pub type off_t = __off_t;
+pub type fpos_t = __fpos_t;
+extern "C" {
+    pub static mut stdin: *mut FILE;
+}
+extern "C" {
+    pub static mut stdout: *mut FILE;
+}
+extern "C" {
+    pub static mut stderr: *mut FILE;
+}
+extern "C" {
+    pub fn remove(__filename: *const ::std::os::raw::c_char) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn rename(
+        __old: *const ::std::os::raw::c_char,
+        __new: *const ::std::os::raw::c_char,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn renameat(
+        __oldfd: ::std::os::raw::c_int,
+        __old: *const ::std::os::raw::c_char,
+        __newfd: ::std::os::raw::c_int,
+        __new: *const ::std::os::raw::c_char,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn fclose(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn tmpfile() -> *mut FILE;
+}
+extern "C" {
+    pub fn tmpnam(arg1: *mut ::std::os::raw::c_char) -> *mut ::std::os::raw::c_char;
+}
+extern "C" {
+    pub fn tmpnam_r(__s: *mut ::std::os::raw::c_char) -> *mut ::std::os::raw::c_char;
+}
+extern "C" {
+    pub fn tempnam(
+        __dir: *const ::std::os::raw::c_char,
+        __pfx: *const ::std::os::raw::c_char,
+    ) -> *mut ::std::os::raw::c_char;
+}
+extern "C" {
+    pub fn fflush(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn fflush_unlocked(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn fopen(
+        __filename: *const ::std::os::raw::c_char,
+        __modes: *const ::std::os::raw::c_char,
+    ) -> *mut FILE;
+}
+extern "C" {
+    pub fn freopen(
+        __filename: *const ::std::os::raw::c_char,
+        __modes: *const ::std::os::raw::c_char,
+        __stream: *mut FILE,
+    ) -> *mut FILE;
+}
+extern "C" {
+    pub fn fdopen(__fd: ::std::os::raw::c_int, __modes: *const ::std::os::raw::c_char)
+        -> *mut FILE;
+}
+extern "C" {
+    pub fn fmemopen(
+        __s: *mut ::std::os::raw::c_void,
+        __len: usize,
+        __modes: *const ::std::os::raw::c_char,
+    ) -> *mut FILE;
+}
+extern "C" {
+    pub fn open_memstream(
+        __bufloc: *mut *mut ::std::os::raw::c_char,
+        __sizeloc: *mut usize,
+    ) -> *mut FILE;
+}
+extern "C" {
+    pub fn setbuf(__stream: *mut FILE, __buf: *mut ::std::os::raw::c_char);
+}
+extern "C" {
+    pub fn setvbuf(
+        __stream: *mut FILE,
+        __buf: *mut ::std::os::raw::c_char,
+        __modes: ::std::os::raw::c_int,
+        __n: usize,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn setbuffer(__stream: *mut FILE, __buf: *mut ::std::os::raw::c_char, __size: usize);
+}
+extern "C" {
+    pub fn setlinebuf(__stream: *mut FILE);
+}
+extern "C" {
+    pub fn fprintf(
+        __stream: *mut FILE,
+        __format: *const ::std::os::raw::c_char,
+        ...
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn printf(__format: *const ::std::os::raw::c_char, ...) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn sprintf(
+        __s: *mut ::std::os::raw::c_char,
+        __format: *const ::std::os::raw::c_char,
+        ...
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn vfprintf(
+        __s: *mut FILE,
+        __format: *const ::std::os::raw::c_char,
+        __arg: *mut __va_list_tag,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn vprintf(
+        __format: *const ::std::os::raw::c_char,
+        __arg: *mut __va_list_tag,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn vsprintf(
+        __s: *mut ::std::os::raw::c_char,
+        __format: *const ::std::os::raw::c_char,
+        __arg: *mut __va_list_tag,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn snprintf(
+        __s: *mut ::std::os::raw::c_char,
+        __maxlen: ::std::os::raw::c_ulong,
+        __format: *const ::std::os::raw::c_char,
+        ...
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn vsnprintf(
+        __s: *mut ::std::os::raw::c_char,
+        __maxlen: ::std::os::raw::c_ulong,
+        __format: *const ::std::os::raw::c_char,
+        __arg: *mut __va_list_tag,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn vdprintf(
+        __fd: ::std::os::raw::c_int,
+        __fmt: *const ::std::os::raw::c_char,
+        __arg: *mut __va_list_tag,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn dprintf(
+        __fd: ::std::os::raw::c_int,
+        __fmt: *const ::std::os::raw::c_char,
+        ...
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn fscanf(
+        __stream: *mut FILE,
+        __format: *const ::std::os::raw::c_char,
+        ...
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn scanf(__format: *const ::std::os::raw::c_char, ...) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn sscanf(
+        __s: *const ::std::os::raw::c_char,
+        __format: *const ::std::os::raw::c_char,
+        ...
+    ) -> ::std::os::raw::c_int;
+}
+pub type _Float32 = f32;
+pub type _Float64 = f64;
+pub type _Float32x = f64;
+pub type _Float64x = u128;
+extern "C" {
+    #[link_name = "\u{1}__isoc99_fscanf"]
+    pub fn fscanf1(
+        __stream: *mut FILE,
+        __format: *const ::std::os::raw::c_char,
+        ...
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}__isoc99_scanf"]
+    pub fn scanf1(__format: *const ::std::os::raw::c_char, ...) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}__isoc99_sscanf"]
+    pub fn sscanf1(
+        __s: *const ::std::os::raw::c_char,
+        __format: *const ::std::os::raw::c_char,
+        ...
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn vfscanf(
+        __s: *mut FILE,
+        __format: *const ::std::os::raw::c_char,
+        __arg: *mut __va_list_tag,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn vscanf(
+        __format: *const ::std::os::raw::c_char,
+        __arg: *mut __va_list_tag,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn vsscanf(
+        __s: *const ::std::os::raw::c_char,
+        __format: *const ::std::os::raw::c_char,
+        __arg: *mut __va_list_tag,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}__isoc99_vfscanf"]
+    pub fn vfscanf1(
+        __s: *mut FILE,
+        __format: *const ::std::os::raw::c_char,
+        __arg: *mut __va_list_tag,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}__isoc99_vscanf"]
+    pub fn vscanf1(
+        __format: *const ::std::os::raw::c_char,
+        __arg: *mut __va_list_tag,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}__isoc99_vsscanf"]
+    pub fn vsscanf1(
+        __s: *const ::std::os::raw::c_char,
+        __format: *const ::std::os::raw::c_char,
+        __arg: *mut __va_list_tag,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn fgetc(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn getc(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn getchar() -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn getc_unlocked(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn getchar_unlocked() -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn fgetc_unlocked(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn fputc(__c: ::std::os::raw::c_int, __stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn putc(__c: ::std::os::raw::c_int, __stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn putchar(__c: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn fputc_unlocked(__c: ::std::os::raw::c_int, __stream: *mut FILE)
+        -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn putc_unlocked(__c: ::std::os::raw::c_int, __stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn putchar_unlocked(__c: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn getw(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn putw(__w: ::std::os::raw::c_int, __stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn fgets(
+        __s: *mut ::std::os::raw::c_char,
+        __n: ::std::os::raw::c_int,
+        __stream: *mut FILE,
+    ) -> *mut ::std::os::raw::c_char;
+}
+extern "C" {
+    pub fn __getdelim(
+        __lineptr: *mut *mut ::std::os::raw::c_char,
+        __n: *mut usize,
+        __delimiter: ::std::os::raw::c_int,
+        __stream: *mut FILE,
+    ) -> __ssize_t;
+}
+extern "C" {
+    pub fn getdelim(
+        __lineptr: *mut *mut ::std::os::raw::c_char,
+        __n: *mut usize,
+        __delimiter: ::std::os::raw::c_int,
+        __stream: *mut FILE,
+    ) -> __ssize_t;
+}
+extern "C" {
+    pub fn getline(
+        __lineptr: *mut *mut ::std::os::raw::c_char,
+        __n: *mut usize,
+        __stream: *mut FILE,
+    ) -> __ssize_t;
+}
+extern "C" {
+    pub fn fputs(__s: *const ::std::os::raw::c_char, __stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn puts(__s: *const ::std::os::raw::c_char) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn ungetc(__c: ::std::os::raw::c_int, __stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn fread(
+        __ptr: *mut ::std::os::raw::c_void,
+        __size: ::std::os::raw::c_ulong,
+        __n: ::std::os::raw::c_ulong,
+        __stream: *mut FILE,
+    ) -> ::std::os::raw::c_ulong;
+}
+extern "C" {
+    pub fn fwrite(
+        __ptr: *const ::std::os::raw::c_void,
+        __size: ::std::os::raw::c_ulong,
+        __n: ::std::os::raw::c_ulong,
+        __s: *mut FILE,
+    ) -> ::std::os::raw::c_ulong;
+}
+extern "C" {
+    pub fn fread_unlocked(
+        __ptr: *mut ::std::os::raw::c_void,
+        __size: usize,
+        __n: usize,
+        __stream: *mut FILE,
+    ) -> usize;
+}
+extern "C" {
+    pub fn fwrite_unlocked(
+        __ptr: *const ::std::os::raw::c_void,
+        __size: usize,
+        __n: usize,
+        __stream: *mut FILE,
+    ) -> usize;
+}
+extern "C" {
+    pub fn fseek(
+        __stream: *mut FILE,
+        __off: ::std::os::raw::c_long,
+        __whence: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn ftell(__stream: *mut FILE) -> ::std::os::raw::c_long;
+}
+extern "C" {
+    pub fn rewind(__stream: *mut FILE);
+}
+extern "C" {
+    pub fn fseeko(
+        __stream: *mut FILE,
+        __off: __off_t,
+        __whence: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn ftello(__stream: *mut FILE) -> __off_t;
+}
+extern "C" {
+    pub fn fgetpos(__stream: *mut FILE, __pos: *mut fpos_t) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn fsetpos(__stream: *mut FILE, __pos: *const fpos_t) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn clearerr(__stream: *mut FILE);
+}
+extern "C" {
+    pub fn feof(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn ferror(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn clearerr_unlocked(__stream: *mut FILE);
+}
+extern "C" {
+    pub fn feof_unlocked(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn ferror_unlocked(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn perror(__s: *const ::std::os::raw::c_char);
+}
+extern "C" {
+    pub fn fileno(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn fileno_unlocked(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn pclose(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn popen(
+        __command: *const ::std::os::raw::c_char,
+        __modes: *const ::std::os::raw::c_char,
+    ) -> *mut FILE;
+}
+extern "C" {
+    pub fn ctermid(__s: *mut ::std::os::raw::c_char) -> *mut ::std::os::raw::c_char;
+}
+extern "C" {
+    pub fn flockfile(__stream: *mut FILE);
+}
+extern "C" {
+    pub fn ftrylockfile(__stream: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn funlockfile(__stream: *mut FILE);
+}
+extern "C" {
+    pub fn __uflow(arg1: *mut FILE) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn __overflow(arg1: *mut FILE, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[doc = " Clone an index. This is equivalent to `faiss::clone_index`"]
+    pub fn faiss_clone_index(
+        arg1: *const FaissIndex,
+        p_out: *mut *mut FaissIndex,
     ) -> ::std::os::raw::c_int;
 }
 #[doc = " Class for the clustering parameters. Can be passed to the\n constructor of the Clustering object."]
@@ -883,6 +1865,298 @@ extern "C" {
         q_error: *mut f32,
     ) -> ::std::os::raw::c_int;
 }
+#[doc = " No error"]
+pub const FaissErrorCode_OK: FaissErrorCode = 0;
+#[doc = " Any exception other than Faiss or standard C++ library exceptions"]
+pub const FaissErrorCode_UNKNOWN_EXCEPT: FaissErrorCode = -1;
+#[doc = " Faiss library exception"]
+pub const FaissErrorCode_FAISS_EXCEPT: FaissErrorCode = -2;
+#[doc = " Standard C++ library exception"]
+pub const FaissErrorCode_STD_EXCEPT: FaissErrorCode = -4;
+#[doc = " An error code which depends on the exception thrown from the previous\n operation. See `faiss_get_last_error` to retrieve the error message."]
+pub type FaissErrorCode = ::std::os::raw::c_int;
+extern "C" {
+    #[doc = " Get the error message of the last failed operation performed by Faiss.\n The given pointer is only invalid until another Faiss function is\n called."]
+    pub fn faiss_get_last_error() -> *const ::std::os::raw::c_char;
+}
+extern "C" {
+    pub fn faiss_RangeSearchResult_nq(arg1: *const FaissRangeSearchResult) -> usize;
+}
+extern "C" {
+    pub fn faiss_RangeSearchResult_new(
+        p_rsr: *mut *mut FaissRangeSearchResult,
+        nq: idx_t,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn faiss_RangeSearchResult_new_with(
+        p_rsr: *mut *mut FaissRangeSearchResult,
+        nq: idx_t,
+        alloc_lims: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[doc = " called when lims contains the nb of elements result entries\n for each query"]
+    pub fn faiss_RangeSearchResult_do_allocation(
+        rsr: *mut FaissRangeSearchResult,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn faiss_RangeSearchResult_free(obj: *mut FaissRangeSearchResult);
+}
+extern "C" {
+    pub fn faiss_RangeSearchResult_buffer_size(arg1: *const FaissRangeSearchResult) -> usize;
+}
+extern "C" {
+    #[doc = " getter for lims: size (nq + 1)"]
+    pub fn faiss_RangeSearchResult_lims(rsr: *mut FaissRangeSearchResult, lims: *mut *mut usize);
+}
+extern "C" {
+    #[doc = " getter for labels and respective distances (not sorted):\n result for query i is labels[lims[i]:lims[i+1]]"]
+    pub fn faiss_RangeSearchResult_labels(
+        rsr: *mut FaissRangeSearchResult,
+        labels: *mut *mut idx_t,
+        distances: *mut *mut f32,
+    );
+}
+extern "C" {
+    pub fn faiss_IDSelector_free(obj: *mut FaissIDSelector);
+}
+extern "C" {
+    #[doc = " Encapsulates a set of ids to remove."]
+    pub fn faiss_IDSelector_is_member(
+        sel: *const FaissIDSelector,
+        id: idx_t,
+    ) -> ::std::os::raw::c_int;
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct FaissIDSelectorRange_H {
+    _unused: [u8; 0],
+}
+pub type FaissIDSelectorRange = FaissIDSelectorRange_H;
+extern "C" {
+    pub fn faiss_IDSelectorRange_free(obj: *mut FaissIDSelectorRange);
+}
+extern "C" {
+    pub fn faiss_IDSelectorRange_imin(arg1: *const FaissIDSelectorRange) -> idx_t;
+}
+extern "C" {
+    pub fn faiss_IDSelectorRange_imax(arg1: *const FaissIDSelectorRange) -> idx_t;
+}
+extern "C" {
+    #[doc = " remove ids between [imni, imax)"]
+    pub fn faiss_IDSelectorRange_new(
+        p_sel: *mut *mut FaissIDSelectorRange,
+        imin: idx_t,
+        imax: idx_t,
+    ) -> ::std::os::raw::c_int;
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct FaissIDSelectorBatch_H {
+    _unused: [u8; 0],
+}
+pub type FaissIDSelectorBatch = FaissIDSelectorBatch_H;
+extern "C" {
+    pub fn faiss_IDSelectorBatch_nbits(arg1: *const FaissIDSelectorBatch) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn faiss_IDSelectorBatch_mask(arg1: *const FaissIDSelectorBatch) -> idx_t;
+}
+extern "C" {
+    #[doc = " Remove ids from a set. Repetitions of ids in the indices set\n passed to the constructor does not hurt performance. The hash\n function used for the bloom filter and GCC's implementation of\n unordered_set are just the least significant bits of the id. This\n works fine for random ids or ids in sequences but will produce many\n hash collisions if lsb's are always the same"]
+    pub fn faiss_IDSelectorBatch_new(
+        p_sel: *mut *mut FaissIDSelectorBatch,
+        n: usize,
+        indices: *const idx_t,
+    ) -> ::std::os::raw::c_int;
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct FaissBufferList_H {
+    _unused: [u8; 0],
+}
+pub type FaissBufferList = FaissBufferList_H;
+extern "C" {
+    pub fn faiss_BufferList_free(obj: *mut FaissBufferList);
+}
+extern "C" {
+    pub fn faiss_BufferList_buffer_size(arg1: *const FaissBufferList) -> usize;
+}
+extern "C" {
+    pub fn faiss_BufferList_wp(arg1: *const FaissBufferList) -> usize;
+}
+#[doc = " List of temporary buffers used to store results before they are\n  copied to the RangeSearchResult object."]
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct FaissBuffer {
+    pub ids: *mut idx_t,
+    pub dis: *mut f32,
+}
+#[test]
+fn bindgen_test_layout_FaissBuffer() {
+    const UNINIT: ::std::mem::MaybeUninit<FaissBuffer> = ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<FaissBuffer>(),
+        16usize,
+        concat!("Size of: ", stringify!(FaissBuffer))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<FaissBuffer>(),
+        8usize,
+        concat!("Alignment of ", stringify!(FaissBuffer))
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).ids) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(FaissBuffer),
+            "::",
+            stringify!(ids)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).dis) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(FaissBuffer),
+            "::",
+            stringify!(dis)
+        )
+    );
+}
+extern "C" {
+    pub fn faiss_BufferList_append_buffer(bl: *mut FaissBufferList) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn faiss_BufferList_new(
+        p_bl: *mut *mut FaissBufferList,
+        buffer_size: usize,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn faiss_BufferList_add(
+        bl: *mut FaissBufferList,
+        id: idx_t,
+        dis: f32,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[doc = " copy elemnts ofs:ofs+n-1 seen as linear data in the buffers to\n tables dest_ids, dest_dis"]
+    pub fn faiss_BufferList_copy_range(
+        bl: *mut FaissBufferList,
+        ofs: usize,
+        n: usize,
+        dest_ids: *mut idx_t,
+        dest_dis: *mut f32,
+    ) -> ::std::os::raw::c_int;
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct FaissRangeSearchPartialResult_H {
+    _unused: [u8; 0],
+}
+pub type FaissRangeSearchPartialResult = FaissRangeSearchPartialResult_H;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct FaissRangeQueryResult_H {
+    _unused: [u8; 0],
+}
+pub type FaissRangeQueryResult = FaissRangeQueryResult_H;
+extern "C" {
+    pub fn faiss_RangeQueryResult_qno(arg1: *const FaissRangeQueryResult) -> idx_t;
+}
+extern "C" {
+    pub fn faiss_RangeQueryResult_nres(arg1: *const FaissRangeQueryResult) -> usize;
+}
+extern "C" {
+    pub fn faiss_RangeQueryResult_pres(
+        arg1: *const FaissRangeQueryResult,
+    ) -> *mut FaissRangeSearchPartialResult;
+}
+extern "C" {
+    #[doc = " result structure for a single query"]
+    pub fn faiss_RangeQueryResult_add(
+        qr: *mut FaissRangeQueryResult,
+        dis: f32,
+        id: idx_t,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn faiss_RangeSearchPartialResult_res(
+        arg1: *const FaissRangeSearchPartialResult,
+    ) -> *mut FaissRangeSearchResult;
+}
+extern "C" {
+    pub fn faiss_RangeSearchPartialResult_new(
+        p_res: *mut *mut FaissRangeSearchPartialResult,
+        res_in: *mut FaissRangeSearchResult,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn faiss_RangeSearchPartialResult_finalize(
+        res: *mut FaissRangeSearchPartialResult,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[doc = " called by range_search before do_allocation"]
+    pub fn faiss_RangeSearchPartialResult_set_lims(
+        res: *mut FaissRangeSearchPartialResult,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn faiss_RangeSearchPartialResult_new_result(
+        res: *mut FaissRangeSearchPartialResult,
+        qno: idx_t,
+        qr: *mut *mut FaissRangeQueryResult,
+    ) -> ::std::os::raw::c_int;
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct FaissDistanceComputer_H {
+    _unused: [u8; 0],
+}
+pub type FaissDistanceComputer = FaissDistanceComputer_H;
+extern "C" {
+    #[doc = " called before computing distances"]
+    pub fn faiss_DistanceComputer_set_query(
+        dc: *mut FaissDistanceComputer,
+        x: *const f32,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[doc = " Compute distance of vector i to current query.\n This function corresponds to the function call operator:\n DistanceComputer::operator()"]
+    pub fn faiss_DistanceComputer_vector_to_query_dis(
+        dc: *mut FaissDistanceComputer,
+        i: idx_t,
+        qd: *mut f32,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[doc = " compute distance between two stored vectors"]
+    pub fn faiss_DistanceComputer_symmetric_dis(
+        dc: *mut FaissDistanceComputer,
+        i: idx_t,
+        j: idx_t,
+        vd: *mut f32,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn faiss_DistanceComputer_free(obj: *mut FaissDistanceComputer);
+}
+extern "C" {
+    #[doc = " Build and index with the sequence of processing steps described in\n  the string."]
+    pub fn faiss_index_factory(
+        p_index: *mut *mut FaissIndex,
+        d: ::std::os::raw::c_int,
+        description: *const ::std::os::raw::c_char,
+        metric: FaissMetricType,
+    ) -> ::std::os::raw::c_int;
+}
 pub type FaissIndexFlat = FaissIndex_H;
 extern "C" {
     #[doc = " Opaque type for IndexFlat"]
@@ -1003,76 +2277,46 @@ extern "C" {
         index: *mut FaissIndexFlat1D,
     ) -> ::std::os::raw::c_int;
 }
-pub type FaissIndexIVFFlat = FaissIndex_H;
 extern "C" {
-    pub fn faiss_IndexIVFFlat_free(obj: *mut FaissIndexIVFFlat);
+    #[doc = " Write index to a file.\n This is equivalent to `faiss::write_index` when a file descriptor is\n provided."]
+    pub fn faiss_write_index(idx: *const FaissIndex, f: *mut FILE) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn faiss_IndexIVFFlat_cast(arg1: *mut FaissIndex) -> *mut FaissIndexIVFFlat;
-}
-extern "C" {
-    pub fn faiss_IndexIVFFlat_nlist(arg1: *const FaissIndexIVFFlat) -> usize;
-}
-extern "C" {
-    pub fn faiss_IndexIVFFlat_nprobe(arg1: *const FaissIndexIVFFlat) -> usize;
-}
-extern "C" {
-    pub fn faiss_IndexIVFFlat_set_nprobe(arg1: *mut FaissIndexIVFFlat, arg2: usize);
-}
-extern "C" {
-    pub fn faiss_IndexIVFFlat_quantizer(arg1: *const FaissIndexIVFFlat) -> *mut FaissIndex;
-}
-extern "C" {
-    pub fn faiss_IndexIVFFlat_quantizer_trains_alone(
-        arg1: *const FaissIndexIVFFlat,
-    ) -> ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn faiss_IndexIVFFlat_own_fields(arg1: *const FaissIndexIVFFlat) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn faiss_IndexIVFFlat_set_own_fields(
-        arg1: *mut FaissIndexIVFFlat,
-        arg2: ::std::os::raw::c_int,
-    );
-}
-extern "C" {
-    #[doc = " whether object owns the quantizer"]
-    pub fn faiss_IndexIVFFlat_new(p_index: *mut *mut FaissIndexIVFFlat) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn faiss_IndexIVFFlat_new_with(
-        p_index: *mut *mut FaissIndexIVFFlat,
-        quantizer: *mut FaissIndex,
-        d: usize,
-        nlist: usize,
+    #[doc = " Write index to a file.\n This is equivalent to `faiss::write_index` when a file path is provided."]
+    pub fn faiss_write_index_fname(
+        idx: *const FaissIndex,
+        fname: *const ::std::os::raw::c_char,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn faiss_IndexIVFFlat_new_with_metric(
-        p_index: *mut *mut FaissIndexIVFFlat,
-        quantizer: *mut FaissIndex,
-        d: usize,
-        nlist: usize,
-        metric: FaissMetricType,
+    #[doc = " Read index from a file.\n This is equivalent to `faiss:read_index` when a file descriptor is given."]
+    pub fn faiss_read_index(
+        f: *mut FILE,
+        io_flags: ::std::os::raw::c_int,
+        p_out: *mut *mut FaissIndex,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn faiss_IndexIVFFlat_add_core(
-        index: *mut FaissIndexIVFFlat,
-        n: idx_t,
-        x: *const f32,
-        xids: *const idx_t,
-        precomputed_idx: *const i64,
+    #[doc = " Read index from a file.\n This is equivalent to `faiss:read_index` when a file path is given."]
+    pub fn faiss_read_index_fname(
+        fname: *const ::std::os::raw::c_char,
+        io_flags: ::std::os::raw::c_int,
+        p_out: *mut *mut FaissIndex,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[doc = " Update a subset of vectors.\n\n The index must have a direct_map\n\n @param nv     nb of vectors to update\n @param idx    vector indices to update, size nv\n @param v      vectors of new values, size nv*d"]
-    pub fn faiss_IndexIVFFlat_update_vectors(
-        index: *mut FaissIndexIVFFlat,
-        nv: ::std::os::raw::c_int,
-        idx: *mut idx_t,
-        v: *const f32,
+    pub fn serialize_index(
+        idx: *const FaissIndex,
+        p_out: *mut *mut u8,
+        p_size: *mut usize,
+        p_capacity: *mut usize,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn deserialize_index(
+        data: *const u8,
+        size: usize,
+        p_out: *mut *mut FaissIndex,
     ) -> ::std::os::raw::c_int;
 }
 pub type FaissIndexIVF = FaissIndex_H;
@@ -1254,6 +2498,78 @@ extern "C" {
 extern "C" {
     #[doc = " global var that collects all statists"]
     pub fn faiss_get_indexIVF_stats() -> *mut FaissIndexIVFStats;
+}
+pub type FaissIndexIVFFlat = FaissIndex_H;
+extern "C" {
+    pub fn faiss_IndexIVFFlat_free(obj: *mut FaissIndexIVFFlat);
+}
+extern "C" {
+    pub fn faiss_IndexIVFFlat_cast(arg1: *mut FaissIndex) -> *mut FaissIndexIVFFlat;
+}
+extern "C" {
+    pub fn faiss_IndexIVFFlat_nlist(arg1: *const FaissIndexIVFFlat) -> usize;
+}
+extern "C" {
+    pub fn faiss_IndexIVFFlat_nprobe(arg1: *const FaissIndexIVFFlat) -> usize;
+}
+extern "C" {
+    pub fn faiss_IndexIVFFlat_set_nprobe(arg1: *mut FaissIndexIVFFlat, arg2: usize);
+}
+extern "C" {
+    pub fn faiss_IndexIVFFlat_quantizer(arg1: *const FaissIndexIVFFlat) -> *mut FaissIndex;
+}
+extern "C" {
+    pub fn faiss_IndexIVFFlat_quantizer_trains_alone(
+        arg1: *const FaissIndexIVFFlat,
+    ) -> ::std::os::raw::c_char;
+}
+extern "C" {
+    pub fn faiss_IndexIVFFlat_own_fields(arg1: *const FaissIndexIVFFlat) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn faiss_IndexIVFFlat_set_own_fields(
+        arg1: *mut FaissIndexIVFFlat,
+        arg2: ::std::os::raw::c_int,
+    );
+}
+extern "C" {
+    #[doc = " whether object owns the quantizer"]
+    pub fn faiss_IndexIVFFlat_new(p_index: *mut *mut FaissIndexIVFFlat) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn faiss_IndexIVFFlat_new_with(
+        p_index: *mut *mut FaissIndexIVFFlat,
+        quantizer: *mut FaissIndex,
+        d: usize,
+        nlist: usize,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn faiss_IndexIVFFlat_new_with_metric(
+        p_index: *mut *mut FaissIndexIVFFlat,
+        quantizer: *mut FaissIndex,
+        d: usize,
+        nlist: usize,
+        metric: FaissMetricType,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    pub fn faiss_IndexIVFFlat_add_core(
+        index: *mut FaissIndexIVFFlat,
+        n: idx_t,
+        x: *const f32,
+        xids: *const idx_t,
+        precomputed_idx: *const i64,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[doc = " Update a subset of vectors.\n\n The index must have a direct_map\n\n @param nv     nb of vectors to update\n @param idx    vector indices to update, size nv\n @param v      vectors of new values, size nv*d"]
+    pub fn faiss_IndexIVFFlat_update_vectors(
+        index: *mut FaissIndexIVFFlat,
+        nv: ::std::os::raw::c_int,
+        idx: *mut idx_t,
+        v: *const f32,
+    ) -> ::std::os::raw::c_int;
 }
 pub type FaissIndexLSH = FaissIndex_H;
 extern "C" {
@@ -1827,1328 +3143,6 @@ extern "C" {
     #[doc = " get a pointer to the sub-index (the `index` field).\n The outputs of this function become invalid after any operation that can\n modify the index.\n\n @param index   opaque pointer to index object"]
     pub fn faiss_IndexIDMap2_sub_index(index: *mut FaissIndexIDMap2) -> *mut FaissIndex;
 }
-pub type va_list = __builtin_va_list;
-pub type __gnuc_va_list = __builtin_va_list;
-#[repr(C)]
-#[derive(Copy, Clone)]
-pub struct __mbstate_t {
-    pub __count: ::std::os::raw::c_int,
-    pub __value: __mbstate_t__bindgen_ty_1,
-}
-#[repr(C)]
-#[derive(Copy, Clone)]
-pub union __mbstate_t__bindgen_ty_1 {
-    pub __wch: ::std::os::raw::c_uint,
-    pub __wchb: [::std::os::raw::c_char; 4usize],
-}
-#[test]
-fn bindgen_test_layout___mbstate_t__bindgen_ty_1() {
-    const UNINIT: ::std::mem::MaybeUninit<__mbstate_t__bindgen_ty_1> =
-        ::std::mem::MaybeUninit::uninit();
-    let ptr = UNINIT.as_ptr();
-    assert_eq!(
-        ::std::mem::size_of::<__mbstate_t__bindgen_ty_1>(),
-        4usize,
-        concat!("Size of: ", stringify!(__mbstate_t__bindgen_ty_1))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<__mbstate_t__bindgen_ty_1>(),
-        4usize,
-        concat!("Alignment of ", stringify!(__mbstate_t__bindgen_ty_1))
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__wch) as usize - ptr as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__mbstate_t__bindgen_ty_1),
-            "::",
-            stringify!(__wch)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__wchb) as usize - ptr as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__mbstate_t__bindgen_ty_1),
-            "::",
-            stringify!(__wchb)
-        )
-    );
-}
-#[test]
-fn bindgen_test_layout___mbstate_t() {
-    const UNINIT: ::std::mem::MaybeUninit<__mbstate_t> = ::std::mem::MaybeUninit::uninit();
-    let ptr = UNINIT.as_ptr();
-    assert_eq!(
-        ::std::mem::size_of::<__mbstate_t>(),
-        8usize,
-        concat!("Size of: ", stringify!(__mbstate_t))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<__mbstate_t>(),
-        4usize,
-        concat!("Alignment of ", stringify!(__mbstate_t))
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__count) as usize - ptr as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__mbstate_t),
-            "::",
-            stringify!(__count)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__value) as usize - ptr as usize },
-        4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__mbstate_t),
-            "::",
-            stringify!(__value)
-        )
-    );
-}
-#[repr(C)]
-#[derive(Copy, Clone)]
-pub struct _G_fpos_t {
-    pub __pos: __off_t,
-    pub __state: __mbstate_t,
-}
-#[test]
-fn bindgen_test_layout__G_fpos_t() {
-    const UNINIT: ::std::mem::MaybeUninit<_G_fpos_t> = ::std::mem::MaybeUninit::uninit();
-    let ptr = UNINIT.as_ptr();
-    assert_eq!(
-        ::std::mem::size_of::<_G_fpos_t>(),
-        16usize,
-        concat!("Size of: ", stringify!(_G_fpos_t))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<_G_fpos_t>(),
-        8usize,
-        concat!("Alignment of ", stringify!(_G_fpos_t))
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__pos) as usize - ptr as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_G_fpos_t),
-            "::",
-            stringify!(__pos)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__state) as usize - ptr as usize },
-        8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_G_fpos_t),
-            "::",
-            stringify!(__state)
-        )
-    );
-}
-pub type __fpos_t = _G_fpos_t;
-#[repr(C)]
-#[derive(Copy, Clone)]
-pub struct _G_fpos64_t {
-    pub __pos: __off64_t,
-    pub __state: __mbstate_t,
-}
-#[test]
-fn bindgen_test_layout__G_fpos64_t() {
-    const UNINIT: ::std::mem::MaybeUninit<_G_fpos64_t> = ::std::mem::MaybeUninit::uninit();
-    let ptr = UNINIT.as_ptr();
-    assert_eq!(
-        ::std::mem::size_of::<_G_fpos64_t>(),
-        16usize,
-        concat!("Size of: ", stringify!(_G_fpos64_t))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<_G_fpos64_t>(),
-        8usize,
-        concat!("Alignment of ", stringify!(_G_fpos64_t))
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__pos) as usize - ptr as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_G_fpos64_t),
-            "::",
-            stringify!(__pos)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__state) as usize - ptr as usize },
-        8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_G_fpos64_t),
-            "::",
-            stringify!(__state)
-        )
-    );
-}
-pub type __fpos64_t = _G_fpos64_t;
-pub type __FILE = _IO_FILE;
-pub type FILE = [u64; 27usize];
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct _IO_marker {
-    _unused: [u8; 0],
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct _IO_codecvt {
-    _unused: [u8; 0],
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct _IO_wide_data {
-    _unused: [u8; 0],
-}
-pub type _IO_lock_t = ::std::os::raw::c_void;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct _IO_FILE {
-    pub _flags: ::std::os::raw::c_int,
-    pub _IO_read_ptr: *mut ::std::os::raw::c_char,
-    pub _IO_read_end: *mut ::std::os::raw::c_char,
-    pub _IO_read_base: *mut ::std::os::raw::c_char,
-    pub _IO_write_base: *mut ::std::os::raw::c_char,
-    pub _IO_write_ptr: *mut ::std::os::raw::c_char,
-    pub _IO_write_end: *mut ::std::os::raw::c_char,
-    pub _IO_buf_base: *mut ::std::os::raw::c_char,
-    pub _IO_buf_end: *mut ::std::os::raw::c_char,
-    pub _IO_save_base: *mut ::std::os::raw::c_char,
-    pub _IO_backup_base: *mut ::std::os::raw::c_char,
-    pub _IO_save_end: *mut ::std::os::raw::c_char,
-    pub _markers: *mut _IO_marker,
-    pub _chain: *mut _IO_FILE,
-    pub _fileno: ::std::os::raw::c_int,
-    pub _flags2: ::std::os::raw::c_int,
-    pub _old_offset: __off_t,
-    pub _cur_column: ::std::os::raw::c_ushort,
-    pub _vtable_offset: ::std::os::raw::c_schar,
-    pub _shortbuf: [::std::os::raw::c_char; 1usize],
-    pub _lock: *mut _IO_lock_t,
-    pub _offset: __off64_t,
-    pub _codecvt: *mut _IO_codecvt,
-    pub _wide_data: *mut _IO_wide_data,
-    pub _freeres_list: *mut _IO_FILE,
-    pub _freeres_buf: *mut ::std::os::raw::c_void,
-    pub __pad5: usize,
-    pub _mode: ::std::os::raw::c_int,
-    pub _unused2: [::std::os::raw::c_char; 20usize],
-}
-#[test]
-fn bindgen_test_layout__IO_FILE() {
-    const UNINIT: ::std::mem::MaybeUninit<_IO_FILE> = ::std::mem::MaybeUninit::uninit();
-    let ptr = UNINIT.as_ptr();
-    assert_eq!(
-        ::std::mem::size_of::<_IO_FILE>(),
-        216usize,
-        concat!("Size of: ", stringify!(_IO_FILE))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<_IO_FILE>(),
-        8usize,
-        concat!("Alignment of ", stringify!(_IO_FILE))
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._flags) as usize - ptr as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_flags)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._IO_read_ptr) as usize - ptr as usize },
-        8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_IO_read_ptr)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._IO_read_end) as usize - ptr as usize },
-        16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_IO_read_end)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._IO_read_base) as usize - ptr as usize },
-        24usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_IO_read_base)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._IO_write_base) as usize - ptr as usize },
-        32usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_IO_write_base)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._IO_write_ptr) as usize - ptr as usize },
-        40usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_IO_write_ptr)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._IO_write_end) as usize - ptr as usize },
-        48usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_IO_write_end)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._IO_buf_base) as usize - ptr as usize },
-        56usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_IO_buf_base)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._IO_buf_end) as usize - ptr as usize },
-        64usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_IO_buf_end)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._IO_save_base) as usize - ptr as usize },
-        72usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_IO_save_base)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._IO_backup_base) as usize - ptr as usize },
-        80usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_IO_backup_base)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._IO_save_end) as usize - ptr as usize },
-        88usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_IO_save_end)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._markers) as usize - ptr as usize },
-        96usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_markers)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._chain) as usize - ptr as usize },
-        104usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_chain)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._fileno) as usize - ptr as usize },
-        112usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_fileno)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._flags2) as usize - ptr as usize },
-        116usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_flags2)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._old_offset) as usize - ptr as usize },
-        120usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_old_offset)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._cur_column) as usize - ptr as usize },
-        128usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_cur_column)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._vtable_offset) as usize - ptr as usize },
-        130usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_vtable_offset)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._shortbuf) as usize - ptr as usize },
-        131usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_shortbuf)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._lock) as usize - ptr as usize },
-        136usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_lock)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._offset) as usize - ptr as usize },
-        144usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_offset)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._codecvt) as usize - ptr as usize },
-        152usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_codecvt)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._wide_data) as usize - ptr as usize },
-        160usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_wide_data)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._freeres_list) as usize - ptr as usize },
-        168usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_freeres_list)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._freeres_buf) as usize - ptr as usize },
-        176usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_freeres_buf)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__pad5) as usize - ptr as usize },
-        184usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(__pad5)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._mode) as usize - ptr as usize },
-        192usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_mode)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr)._unused2) as usize - ptr as usize },
-        196usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_IO_FILE),
-            "::",
-            stringify!(_unused2)
-        )
-    );
-}
-pub type off_t = __off_t;
-pub type fpos_t = __fpos_t;
-extern "C" {
-    pub static mut stdin: *mut FILE;
-}
-extern "C" {
-    pub static mut stdout: *mut FILE;
-}
-extern "C" {
-    pub static mut stderr: *mut FILE;
-}
-extern "C" {
-    pub fn remove(__filename: *const ::std::os::raw::c_char) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn rename(
-        __old: *const ::std::os::raw::c_char,
-        __new: *const ::std::os::raw::c_char,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn renameat(
-        __oldfd: ::std::os::raw::c_int,
-        __old: *const ::std::os::raw::c_char,
-        __newfd: ::std::os::raw::c_int,
-        __new: *const ::std::os::raw::c_char,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn tmpfile() -> *mut FILE;
-}
-extern "C" {
-    pub fn tmpnam(__s: *mut ::std::os::raw::c_char) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn tmpnam_r(__s: *mut ::std::os::raw::c_char) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn tempnam(
-        __dir: *const ::std::os::raw::c_char,
-        __pfx: *const ::std::os::raw::c_char,
-    ) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn fclose(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn fflush(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn fflush_unlocked(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn fopen(
-        __filename: *const ::std::os::raw::c_char,
-        __modes: *const ::std::os::raw::c_char,
-    ) -> *mut FILE;
-}
-extern "C" {
-    pub fn freopen(
-        __filename: *const ::std::os::raw::c_char,
-        __modes: *const ::std::os::raw::c_char,
-        __stream: *mut FILE,
-    ) -> *mut FILE;
-}
-extern "C" {
-    pub fn fdopen(__fd: ::std::os::raw::c_int, __modes: *const ::std::os::raw::c_char)
-        -> *mut FILE;
-}
-extern "C" {
-    pub fn fmemopen(
-        __s: *mut ::std::os::raw::c_void,
-        __len: usize,
-        __modes: *const ::std::os::raw::c_char,
-    ) -> *mut FILE;
-}
-extern "C" {
-    pub fn open_memstream(
-        __bufloc: *mut *mut ::std::os::raw::c_char,
-        __sizeloc: *mut usize,
-    ) -> *mut FILE;
-}
-extern "C" {
-    pub fn setbuf(__stream: *mut FILE, __buf: *mut ::std::os::raw::c_char);
-}
-extern "C" {
-    pub fn setvbuf(
-        __stream: *mut FILE,
-        __buf: *mut ::std::os::raw::c_char,
-        __modes: ::std::os::raw::c_int,
-        __n: usize,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn setbuffer(__stream: *mut FILE, __buf: *mut ::std::os::raw::c_char, __size: usize);
-}
-extern "C" {
-    pub fn setlinebuf(__stream: *mut FILE);
-}
-extern "C" {
-    pub fn fprintf(
-        __stream: *mut FILE,
-        __format: *const ::std::os::raw::c_char,
-        ...
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn printf(__format: *const ::std::os::raw::c_char, ...) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn sprintf(
-        __s: *mut ::std::os::raw::c_char,
-        __format: *const ::std::os::raw::c_char,
-        ...
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn vfprintf(
-        __s: *mut FILE,
-        __format: *const ::std::os::raw::c_char,
-        __arg: *mut __va_list_tag,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn vprintf(
-        __format: *const ::std::os::raw::c_char,
-        __arg: *mut __va_list_tag,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn vsprintf(
-        __s: *mut ::std::os::raw::c_char,
-        __format: *const ::std::os::raw::c_char,
-        __arg: *mut __va_list_tag,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn snprintf(
-        __s: *mut ::std::os::raw::c_char,
-        __maxlen: ::std::os::raw::c_ulong,
-        __format: *const ::std::os::raw::c_char,
-        ...
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn vsnprintf(
-        __s: *mut ::std::os::raw::c_char,
-        __maxlen: ::std::os::raw::c_ulong,
-        __format: *const ::std::os::raw::c_char,
-        __arg: *mut __va_list_tag,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn vdprintf(
-        __fd: ::std::os::raw::c_int,
-        __fmt: *const ::std::os::raw::c_char,
-        __arg: *mut __va_list_tag,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn dprintf(
-        __fd: ::std::os::raw::c_int,
-        __fmt: *const ::std::os::raw::c_char,
-        ...
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn fscanf(
-        __stream: *mut FILE,
-        __format: *const ::std::os::raw::c_char,
-        ...
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn scanf(__format: *const ::std::os::raw::c_char, ...) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn sscanf(
-        __s: *const ::std::os::raw::c_char,
-        __format: *const ::std::os::raw::c_char,
-        ...
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}__isoc99_fscanf"]
-    pub fn fscanf1(
-        __stream: *mut FILE,
-        __format: *const ::std::os::raw::c_char,
-        ...
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}__isoc99_scanf"]
-    pub fn scanf1(__format: *const ::std::os::raw::c_char, ...) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}__isoc99_sscanf"]
-    pub fn sscanf1(
-        __s: *const ::std::os::raw::c_char,
-        __format: *const ::std::os::raw::c_char,
-        ...
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn vfscanf(
-        __s: *mut FILE,
-        __format: *const ::std::os::raw::c_char,
-        __arg: *mut __va_list_tag,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn vscanf(
-        __format: *const ::std::os::raw::c_char,
-        __arg: *mut __va_list_tag,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn vsscanf(
-        __s: *const ::std::os::raw::c_char,
-        __format: *const ::std::os::raw::c_char,
-        __arg: *mut __va_list_tag,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}__isoc99_vfscanf"]
-    pub fn vfscanf1(
-        __s: *mut FILE,
-        __format: *const ::std::os::raw::c_char,
-        __arg: *mut __va_list_tag,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}__isoc99_vscanf"]
-    pub fn vscanf1(
-        __format: *const ::std::os::raw::c_char,
-        __arg: *mut __va_list_tag,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}__isoc99_vsscanf"]
-    pub fn vsscanf1(
-        __s: *const ::std::os::raw::c_char,
-        __format: *const ::std::os::raw::c_char,
-        __arg: *mut __va_list_tag,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn fgetc(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn getc(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn getchar() -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn getc_unlocked(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn getchar_unlocked() -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn fgetc_unlocked(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn fputc(__c: ::std::os::raw::c_int, __stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn putc(__c: ::std::os::raw::c_int, __stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn putchar(__c: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn fputc_unlocked(__c: ::std::os::raw::c_int, __stream: *mut FILE)
-        -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn putc_unlocked(__c: ::std::os::raw::c_int, __stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn putchar_unlocked(__c: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn getw(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn putw(__w: ::std::os::raw::c_int, __stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn fgets(
-        __s: *mut ::std::os::raw::c_char,
-        __n: ::std::os::raw::c_int,
-        __stream: *mut FILE,
-    ) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn __getdelim(
-        __lineptr: *mut *mut ::std::os::raw::c_char,
-        __n: *mut usize,
-        __delimiter: ::std::os::raw::c_int,
-        __stream: *mut FILE,
-    ) -> __ssize_t;
-}
-extern "C" {
-    pub fn getdelim(
-        __lineptr: *mut *mut ::std::os::raw::c_char,
-        __n: *mut usize,
-        __delimiter: ::std::os::raw::c_int,
-        __stream: *mut FILE,
-    ) -> __ssize_t;
-}
-extern "C" {
-    pub fn getline(
-        __lineptr: *mut *mut ::std::os::raw::c_char,
-        __n: *mut usize,
-        __stream: *mut FILE,
-    ) -> __ssize_t;
-}
-extern "C" {
-    pub fn fputs(__s: *const ::std::os::raw::c_char, __stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn puts(__s: *const ::std::os::raw::c_char) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn ungetc(__c: ::std::os::raw::c_int, __stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn fread(
-        __ptr: *mut ::std::os::raw::c_void,
-        __size: ::std::os::raw::c_ulong,
-        __n: ::std::os::raw::c_ulong,
-        __stream: *mut FILE,
-    ) -> ::std::os::raw::c_ulong;
-}
-extern "C" {
-    pub fn fwrite(
-        __ptr: *const ::std::os::raw::c_void,
-        __size: ::std::os::raw::c_ulong,
-        __n: ::std::os::raw::c_ulong,
-        __s: *mut FILE,
-    ) -> ::std::os::raw::c_ulong;
-}
-extern "C" {
-    pub fn fread_unlocked(
-        __ptr: *mut ::std::os::raw::c_void,
-        __size: usize,
-        __n: usize,
-        __stream: *mut FILE,
-    ) -> usize;
-}
-extern "C" {
-    pub fn fwrite_unlocked(
-        __ptr: *const ::std::os::raw::c_void,
-        __size: usize,
-        __n: usize,
-        __stream: *mut FILE,
-    ) -> usize;
-}
-extern "C" {
-    pub fn fseek(
-        __stream: *mut FILE,
-        __off: ::std::os::raw::c_long,
-        __whence: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn ftell(__stream: *mut FILE) -> ::std::os::raw::c_long;
-}
-extern "C" {
-    pub fn rewind(__stream: *mut FILE);
-}
-extern "C" {
-    pub fn fseeko(
-        __stream: *mut FILE,
-        __off: __off_t,
-        __whence: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn ftello(__stream: *mut FILE) -> __off_t;
-}
-extern "C" {
-    pub fn fgetpos(__stream: *mut FILE, __pos: *mut fpos_t) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn fsetpos(__stream: *mut FILE, __pos: *const fpos_t) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn clearerr(__stream: *mut FILE);
-}
-extern "C" {
-    pub fn feof(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn ferror(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn clearerr_unlocked(__stream: *mut FILE);
-}
-extern "C" {
-    pub fn feof_unlocked(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn ferror_unlocked(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn perror(__s: *const ::std::os::raw::c_char);
-}
-extern "C" {
-    pub static mut sys_nerr: ::std::os::raw::c_int;
-}
-extern "C" {
-    pub static sys_errlist: [*const ::std::os::raw::c_char; 0usize];
-}
-extern "C" {
-    pub fn fileno(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn fileno_unlocked(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn popen(
-        __command: *const ::std::os::raw::c_char,
-        __modes: *const ::std::os::raw::c_char,
-    ) -> *mut FILE;
-}
-extern "C" {
-    pub fn pclose(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn ctermid(__s: *mut ::std::os::raw::c_char) -> *mut ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn flockfile(__stream: *mut FILE);
-}
-extern "C" {
-    pub fn ftrylockfile(__stream: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn funlockfile(__stream: *mut FILE);
-}
-extern "C" {
-    pub fn __uflow(arg1: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn __overflow(arg1: *mut FILE, arg2: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[doc = " Clone an index. This is equivalent to `faiss::clone_index`"]
-    pub fn faiss_clone_index(
-        arg1: *const FaissIndex,
-        p_out: *mut *mut FaissIndex,
-    ) -> ::std::os::raw::c_int;
-}
-#[doc = " No error"]
-pub const FaissErrorCode_OK: FaissErrorCode = 0;
-#[doc = " Any exception other than Faiss or standard C++ library exceptions"]
-pub const FaissErrorCode_UNKNOWN_EXCEPT: FaissErrorCode = -1;
-#[doc = " Faiss library exception"]
-pub const FaissErrorCode_FAISS_EXCEPT: FaissErrorCode = -2;
-#[doc = " Standard C++ library exception"]
-pub const FaissErrorCode_STD_EXCEPT: FaissErrorCode = -4;
-#[doc = " An error code which depends on the exception thrown from the previous\n operation. See `faiss_get_last_error` to retrieve the error message."]
-pub type FaissErrorCode = ::std::os::raw::c_int;
-extern "C" {
-    #[doc = " Get the error message of the last failed operation performed by Faiss.\n The given pointer is only invalid until another Faiss function is\n called."]
-    pub fn faiss_get_last_error() -> *const ::std::os::raw::c_char;
-}
-extern "C" {
-    pub fn faiss_RangeSearchResult_nq(arg1: *const FaissRangeSearchResult) -> usize;
-}
-extern "C" {
-    pub fn faiss_RangeSearchResult_new(
-        p_rsr: *mut *mut FaissRangeSearchResult,
-        nq: idx_t,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn faiss_RangeSearchResult_new_with(
-        p_rsr: *mut *mut FaissRangeSearchResult,
-        nq: idx_t,
-        alloc_lims: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[doc = " called when lims contains the nb of elements result entries\n for each query"]
-    pub fn faiss_RangeSearchResult_do_allocation(
-        rsr: *mut FaissRangeSearchResult,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn faiss_RangeSearchResult_free(obj: *mut FaissRangeSearchResult);
-}
-extern "C" {
-    pub fn faiss_RangeSearchResult_buffer_size(arg1: *const FaissRangeSearchResult) -> usize;
-}
-extern "C" {
-    #[doc = " getter for lims: size (nq + 1)"]
-    pub fn faiss_RangeSearchResult_lims(rsr: *mut FaissRangeSearchResult, lims: *mut *mut usize);
-}
-extern "C" {
-    #[doc = " getter for labels and respective distances (not sorted):\n result for query i is labels[lims[i]:lims[i+1]]"]
-    pub fn faiss_RangeSearchResult_labels(
-        rsr: *mut FaissRangeSearchResult,
-        labels: *mut *mut idx_t,
-        distances: *mut *mut f32,
-    );
-}
-extern "C" {
-    pub fn faiss_IDSelector_free(obj: *mut FaissIDSelector);
-}
-extern "C" {
-    #[doc = " Encapsulates a set of ids to remove."]
-    pub fn faiss_IDSelector_is_member(
-        sel: *const FaissIDSelector,
-        id: idx_t,
-    ) -> ::std::os::raw::c_int;
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct FaissIDSelectorRange_H {
-    _unused: [u8; 0],
-}
-pub type FaissIDSelectorRange = FaissIDSelectorRange_H;
-extern "C" {
-    pub fn faiss_IDSelectorRange_free(obj: *mut FaissIDSelectorRange);
-}
-extern "C" {
-    pub fn faiss_IDSelectorRange_imin(arg1: *const FaissIDSelectorRange) -> idx_t;
-}
-extern "C" {
-    pub fn faiss_IDSelectorRange_imax(arg1: *const FaissIDSelectorRange) -> idx_t;
-}
-extern "C" {
-    #[doc = " remove ids between [imni, imax)"]
-    pub fn faiss_IDSelectorRange_new(
-        p_sel: *mut *mut FaissIDSelectorRange,
-        imin: idx_t,
-        imax: idx_t,
-    ) -> ::std::os::raw::c_int;
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct FaissIDSelectorBatch_H {
-    _unused: [u8; 0],
-}
-pub type FaissIDSelectorBatch = FaissIDSelectorBatch_H;
-extern "C" {
-    pub fn faiss_IDSelectorBatch_nbits(arg1: *const FaissIDSelectorBatch) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn faiss_IDSelectorBatch_mask(arg1: *const FaissIDSelectorBatch) -> idx_t;
-}
-extern "C" {
-    #[doc = " Remove ids from a set. Repetitions of ids in the indices set\n passed to the constructor does not hurt performance. The hash\n function used for the bloom filter and GCC's implementation of\n unordered_set are just the least significant bits of the id. This\n works fine for random ids or ids in sequences but will produce many\n hash collisions if lsb's are always the same"]
-    pub fn faiss_IDSelectorBatch_new(
-        p_sel: *mut *mut FaissIDSelectorBatch,
-        n: usize,
-        indices: *const idx_t,
-    ) -> ::std::os::raw::c_int;
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct FaissBufferList_H {
-    _unused: [u8; 0],
-}
-pub type FaissBufferList = FaissBufferList_H;
-extern "C" {
-    pub fn faiss_BufferList_free(obj: *mut FaissBufferList);
-}
-extern "C" {
-    pub fn faiss_BufferList_buffer_size(arg1: *const FaissBufferList) -> usize;
-}
-extern "C" {
-    pub fn faiss_BufferList_wp(arg1: *const FaissBufferList) -> usize;
-}
-#[doc = " List of temporary buffers used to store results before they are\n  copied to the RangeSearchResult object."]
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct FaissBuffer {
-    pub ids: *mut idx_t,
-    pub dis: *mut f32,
-}
-#[test]
-fn bindgen_test_layout_FaissBuffer() {
-    const UNINIT: ::std::mem::MaybeUninit<FaissBuffer> = ::std::mem::MaybeUninit::uninit();
-    let ptr = UNINIT.as_ptr();
-    assert_eq!(
-        ::std::mem::size_of::<FaissBuffer>(),
-        16usize,
-        concat!("Size of: ", stringify!(FaissBuffer))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<FaissBuffer>(),
-        8usize,
-        concat!("Alignment of ", stringify!(FaissBuffer))
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).ids) as usize - ptr as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(FaissBuffer),
-            "::",
-            stringify!(ids)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).dis) as usize - ptr as usize },
-        8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(FaissBuffer),
-            "::",
-            stringify!(dis)
-        )
-    );
-}
-extern "C" {
-    pub fn faiss_BufferList_append_buffer(bl: *mut FaissBufferList) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn faiss_BufferList_new(
-        p_bl: *mut *mut FaissBufferList,
-        buffer_size: usize,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn faiss_BufferList_add(
-        bl: *mut FaissBufferList,
-        id: idx_t,
-        dis: f32,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[doc = " copy elemnts ofs:ofs+n-1 seen as linear data in the buffers to\n tables dest_ids, dest_dis"]
-    pub fn faiss_BufferList_copy_range(
-        bl: *mut FaissBufferList,
-        ofs: usize,
-        n: usize,
-        dest_ids: *mut idx_t,
-        dest_dis: *mut f32,
-    ) -> ::std::os::raw::c_int;
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct FaissRangeSearchPartialResult_H {
-    _unused: [u8; 0],
-}
-pub type FaissRangeSearchPartialResult = FaissRangeSearchPartialResult_H;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct FaissRangeQueryResult_H {
-    _unused: [u8; 0],
-}
-pub type FaissRangeQueryResult = FaissRangeQueryResult_H;
-extern "C" {
-    pub fn faiss_RangeQueryResult_qno(arg1: *const FaissRangeQueryResult) -> idx_t;
-}
-extern "C" {
-    pub fn faiss_RangeQueryResult_nres(arg1: *const FaissRangeQueryResult) -> usize;
-}
-extern "C" {
-    pub fn faiss_RangeQueryResult_pres(
-        arg1: *const FaissRangeQueryResult,
-    ) -> *mut FaissRangeSearchPartialResult;
-}
-extern "C" {
-    #[doc = " result structure for a single query"]
-    pub fn faiss_RangeQueryResult_add(
-        qr: *mut FaissRangeQueryResult,
-        dis: f32,
-        id: idx_t,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn faiss_RangeSearchPartialResult_res(
-        arg1: *const FaissRangeSearchPartialResult,
-    ) -> *mut FaissRangeSearchResult;
-}
-extern "C" {
-    pub fn faiss_RangeSearchPartialResult_new(
-        p_res: *mut *mut FaissRangeSearchPartialResult,
-        res_in: *mut FaissRangeSearchResult,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn faiss_RangeSearchPartialResult_finalize(
-        res: *mut FaissRangeSearchPartialResult,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[doc = " called by range_search before do_allocation"]
-    pub fn faiss_RangeSearchPartialResult_set_lims(
-        res: *mut FaissRangeSearchPartialResult,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn faiss_RangeSearchPartialResult_new_result(
-        res: *mut FaissRangeSearchPartialResult,
-        qno: idx_t,
-        qr: *mut *mut FaissRangeQueryResult,
-    ) -> ::std::os::raw::c_int;
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct FaissDistanceComputer_H {
-    _unused: [u8; 0],
-}
-pub type FaissDistanceComputer = FaissDistanceComputer_H;
-extern "C" {
-    #[doc = " called before computing distances"]
-    pub fn faiss_DistanceComputer_set_query(
-        dc: *mut FaissDistanceComputer,
-        x: *const f32,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[doc = " Compute distance of vector i to current query.\n This function corresponds to the function call operator:\n DistanceComputer::operator()"]
-    pub fn faiss_DistanceComputer_vector_to_query_dis(
-        dc: *mut FaissDistanceComputer,
-        i: idx_t,
-        qd: *mut f32,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[doc = " compute distance between two stored vectors"]
-    pub fn faiss_DistanceComputer_symmetric_dis(
-        dc: *mut FaissDistanceComputer,
-        i: idx_t,
-        j: idx_t,
-        vd: *mut f32,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn faiss_DistanceComputer_free(obj: *mut FaissDistanceComputer);
-}
-extern "C" {
-    #[doc = " Build and index with the sequence of processing steps described in\n  the string."]
-    pub fn faiss_index_factory(
-        p_index: *mut *mut FaissIndex,
-        d: ::std::os::raw::c_int,
-        description: *const ::std::os::raw::c_char,
-        metric: FaissMetricType,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[doc = " Write index to a file.\n This is equivalent to `faiss::write_index` when a file descriptor is\n provided."]
-    pub fn faiss_write_index(idx: *const FaissIndex, f: *mut FILE) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[doc = " Write index to a file.\n This is equivalent to `faiss::write_index` when a file path is provided."]
-    pub fn faiss_write_index_fname(
-        idx: *const FaissIndex,
-        fname: *const ::std::os::raw::c_char,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[doc = " Read index from a file.\n This is equivalent to `faiss:read_index` when a file descriptor is given."]
-    pub fn faiss_read_index(
-        f: *mut FILE,
-        io_flags: ::std::os::raw::c_int,
-        p_out: *mut *mut FaissIndex,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[doc = " Read index from a file.\n This is equivalent to `faiss:read_index` when a file path is given."]
-    pub fn faiss_read_index_fname(
-        fname: *const ::std::os::raw::c_char,
-        io_flags: ::std::os::raw::c_int,
-        p_out: *mut *mut FaissIndex,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn seralize_index(
-        idx: *const FaissIndex,
-        p_out: *mut *mut ::std::os::raw::c_char,
-        p_size: *mut usize,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn deserialize_index(
-        data: *const ::std::os::raw::c_char,
-        size: usize,
-        p_out: *mut *mut FaissIndex,
-    ) -> ::std::os::raw::c_int;
-}
-pub const idtype_t_P_ALL: idtype_t = 0;
-pub const idtype_t_P_PID: idtype_t = 1;
-pub const idtype_t_P_PGID: idtype_t = 2;
-pub type idtype_t = ::std::os::raw::c_uint;
-pub type _Float32 = f32;
-pub type _Float64 = f64;
-pub type _Float32x = f64;
-pub type _Float64x = u128;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct div_t {
@@ -3554,6 +3548,93 @@ pub type blkcnt_t = __blkcnt_t;
 pub type fsblkcnt_t = __fsblkcnt_t;
 pub type fsfilcnt_t = __fsfilcnt_t;
 #[repr(C)]
+#[derive(Copy, Clone)]
+pub union __atomic_wide_counter {
+    pub __value64: ::std::os::raw::c_ulonglong,
+    pub __value32: __atomic_wide_counter__bindgen_ty_1,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct __atomic_wide_counter__bindgen_ty_1 {
+    pub __low: ::std::os::raw::c_uint,
+    pub __high: ::std::os::raw::c_uint,
+}
+#[test]
+fn bindgen_test_layout___atomic_wide_counter__bindgen_ty_1() {
+    const UNINIT: ::std::mem::MaybeUninit<__atomic_wide_counter__bindgen_ty_1> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<__atomic_wide_counter__bindgen_ty_1>(),
+        8usize,
+        concat!("Size of: ", stringify!(__atomic_wide_counter__bindgen_ty_1))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<__atomic_wide_counter__bindgen_ty_1>(),
+        4usize,
+        concat!(
+            "Alignment of ",
+            stringify!(__atomic_wide_counter__bindgen_ty_1)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__low) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(__atomic_wide_counter__bindgen_ty_1),
+            "::",
+            stringify!(__low)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__high) as usize - ptr as usize },
+        4usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(__atomic_wide_counter__bindgen_ty_1),
+            "::",
+            stringify!(__high)
+        )
+    );
+}
+#[test]
+fn bindgen_test_layout___atomic_wide_counter() {
+    const UNINIT: ::std::mem::MaybeUninit<__atomic_wide_counter> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<__atomic_wide_counter>(),
+        8usize,
+        concat!("Size of: ", stringify!(__atomic_wide_counter))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<__atomic_wide_counter>(),
+        8usize,
+        concat!("Alignment of ", stringify!(__atomic_wide_counter))
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__value64) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(__atomic_wide_counter),
+            "::",
+            stringify!(__value64)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__value32) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(__atomic_wide_counter),
+            "::",
+            stringify!(__value32)
+        )
+    );
+}
+#[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct __pthread_internal_list {
     pub __prev: *mut __pthread_internal_list,
@@ -3890,193 +3971,13 @@ fn bindgen_test_layout___pthread_rwlock_arch_t() {
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub struct __pthread_cond_s {
-    pub __bindgen_anon_1: __pthread_cond_s__bindgen_ty_1,
-    pub __bindgen_anon_2: __pthread_cond_s__bindgen_ty_2,
+    pub __wseq: __atomic_wide_counter,
+    pub __g1_start: __atomic_wide_counter,
     pub __g_refs: [::std::os::raw::c_uint; 2usize],
     pub __g_size: [::std::os::raw::c_uint; 2usize],
     pub __g1_orig_size: ::std::os::raw::c_uint,
     pub __wrefs: ::std::os::raw::c_uint,
     pub __g_signals: [::std::os::raw::c_uint; 2usize],
-}
-#[repr(C)]
-#[derive(Copy, Clone)]
-pub union __pthread_cond_s__bindgen_ty_1 {
-    pub __wseq: ::std::os::raw::c_ulonglong,
-    pub __wseq32: __pthread_cond_s__bindgen_ty_1__bindgen_ty_1,
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct __pthread_cond_s__bindgen_ty_1__bindgen_ty_1 {
-    pub __low: ::std::os::raw::c_uint,
-    pub __high: ::std::os::raw::c_uint,
-}
-#[test]
-fn bindgen_test_layout___pthread_cond_s__bindgen_ty_1__bindgen_ty_1() {
-    const UNINIT: ::std::mem::MaybeUninit<__pthread_cond_s__bindgen_ty_1__bindgen_ty_1> =
-        ::std::mem::MaybeUninit::uninit();
-    let ptr = UNINIT.as_ptr();
-    assert_eq!(
-        ::std::mem::size_of::<__pthread_cond_s__bindgen_ty_1__bindgen_ty_1>(),
-        8usize,
-        concat!(
-            "Size of: ",
-            stringify!(__pthread_cond_s__bindgen_ty_1__bindgen_ty_1)
-        )
-    );
-    assert_eq!(
-        ::std::mem::align_of::<__pthread_cond_s__bindgen_ty_1__bindgen_ty_1>(),
-        4usize,
-        concat!(
-            "Alignment of ",
-            stringify!(__pthread_cond_s__bindgen_ty_1__bindgen_ty_1)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__low) as usize - ptr as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__pthread_cond_s__bindgen_ty_1__bindgen_ty_1),
-            "::",
-            stringify!(__low)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__high) as usize - ptr as usize },
-        4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__pthread_cond_s__bindgen_ty_1__bindgen_ty_1),
-            "::",
-            stringify!(__high)
-        )
-    );
-}
-#[test]
-fn bindgen_test_layout___pthread_cond_s__bindgen_ty_1() {
-    const UNINIT: ::std::mem::MaybeUninit<__pthread_cond_s__bindgen_ty_1> =
-        ::std::mem::MaybeUninit::uninit();
-    let ptr = UNINIT.as_ptr();
-    assert_eq!(
-        ::std::mem::size_of::<__pthread_cond_s__bindgen_ty_1>(),
-        8usize,
-        concat!("Size of: ", stringify!(__pthread_cond_s__bindgen_ty_1))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<__pthread_cond_s__bindgen_ty_1>(),
-        8usize,
-        concat!("Alignment of ", stringify!(__pthread_cond_s__bindgen_ty_1))
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__wseq) as usize - ptr as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__pthread_cond_s__bindgen_ty_1),
-            "::",
-            stringify!(__wseq)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__wseq32) as usize - ptr as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__pthread_cond_s__bindgen_ty_1),
-            "::",
-            stringify!(__wseq32)
-        )
-    );
-}
-#[repr(C)]
-#[derive(Copy, Clone)]
-pub union __pthread_cond_s__bindgen_ty_2 {
-    pub __g1_start: ::std::os::raw::c_ulonglong,
-    pub __g1_start32: __pthread_cond_s__bindgen_ty_2__bindgen_ty_1,
-}
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct __pthread_cond_s__bindgen_ty_2__bindgen_ty_1 {
-    pub __low: ::std::os::raw::c_uint,
-    pub __high: ::std::os::raw::c_uint,
-}
-#[test]
-fn bindgen_test_layout___pthread_cond_s__bindgen_ty_2__bindgen_ty_1() {
-    const UNINIT: ::std::mem::MaybeUninit<__pthread_cond_s__bindgen_ty_2__bindgen_ty_1> =
-        ::std::mem::MaybeUninit::uninit();
-    let ptr = UNINIT.as_ptr();
-    assert_eq!(
-        ::std::mem::size_of::<__pthread_cond_s__bindgen_ty_2__bindgen_ty_1>(),
-        8usize,
-        concat!(
-            "Size of: ",
-            stringify!(__pthread_cond_s__bindgen_ty_2__bindgen_ty_1)
-        )
-    );
-    assert_eq!(
-        ::std::mem::align_of::<__pthread_cond_s__bindgen_ty_2__bindgen_ty_1>(),
-        4usize,
-        concat!(
-            "Alignment of ",
-            stringify!(__pthread_cond_s__bindgen_ty_2__bindgen_ty_1)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__low) as usize - ptr as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__pthread_cond_s__bindgen_ty_2__bindgen_ty_1),
-            "::",
-            stringify!(__low)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__high) as usize - ptr as usize },
-        4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__pthread_cond_s__bindgen_ty_2__bindgen_ty_1),
-            "::",
-            stringify!(__high)
-        )
-    );
-}
-#[test]
-fn bindgen_test_layout___pthread_cond_s__bindgen_ty_2() {
-    const UNINIT: ::std::mem::MaybeUninit<__pthread_cond_s__bindgen_ty_2> =
-        ::std::mem::MaybeUninit::uninit();
-    let ptr = UNINIT.as_ptr();
-    assert_eq!(
-        ::std::mem::size_of::<__pthread_cond_s__bindgen_ty_2>(),
-        8usize,
-        concat!("Size of: ", stringify!(__pthread_cond_s__bindgen_ty_2))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<__pthread_cond_s__bindgen_ty_2>(),
-        8usize,
-        concat!("Alignment of ", stringify!(__pthread_cond_s__bindgen_ty_2))
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__g1_start) as usize - ptr as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__pthread_cond_s__bindgen_ty_2),
-            "::",
-            stringify!(__g1_start)
-        )
-    );
-    assert_eq!(
-        unsafe { ::std::ptr::addr_of!((*ptr).__g1_start32) as usize - ptr as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__pthread_cond_s__bindgen_ty_2),
-            "::",
-            stringify!(__g1_start32)
-        )
-    );
 }
 #[test]
 fn bindgen_test_layout___pthread_cond_s() {
@@ -4091,6 +3992,26 @@ fn bindgen_test_layout___pthread_cond_s() {
         ::std::mem::align_of::<__pthread_cond_s>(),
         8usize,
         concat!("Alignment of ", stringify!(__pthread_cond_s))
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__wseq) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(__pthread_cond_s),
+            "::",
+            stringify!(__wseq)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__g1_start) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(__pthread_cond_s),
+            "::",
+            stringify!(__g1_start)
+        )
     );
     assert_eq!(
         unsafe { ::std::ptr::addr_of!((*ptr).__g_refs) as usize - ptr as usize },
@@ -4140,6 +4061,38 @@ fn bindgen_test_layout___pthread_cond_s() {
             stringify!(__pthread_cond_s),
             "::",
             stringify!(__g_signals)
+        )
+    );
+}
+pub type __tss_t = ::std::os::raw::c_uint;
+pub type __thrd_t = ::std::os::raw::c_ulong;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct __once_flag {
+    pub __data: ::std::os::raw::c_int,
+}
+#[test]
+fn bindgen_test_layout___once_flag() {
+    const UNINIT: ::std::mem::MaybeUninit<__once_flag> = ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<__once_flag>(),
+        4usize,
+        concat!("Size of: ", stringify!(__once_flag))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<__once_flag>(),
+        4usize,
+        concat!("Alignment of ", stringify!(__once_flag))
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).__data) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(__once_flag),
+            "::",
+            stringify!(__data)
         )
     );
 }
@@ -4865,14 +4818,14 @@ extern "C" {
     ) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
+    pub fn free(__ptr: *mut ::std::os::raw::c_void);
+}
+extern "C" {
     pub fn reallocarray(
         __ptr: *mut ::std::os::raw::c_void,
         __nmemb: usize,
         __size: usize,
     ) -> *mut ::std::os::raw::c_void;
-}
-extern "C" {
-    pub fn free(__ptr: *mut ::std::os::raw::c_void);
 }
 extern "C" {
     pub fn alloca(__size: ::std::os::raw::c_ulong) -> *mut ::std::os::raw::c_void;
@@ -4888,7 +4841,10 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn aligned_alloc(__alignment: usize, __size: usize) -> *mut ::std::os::raw::c_void;
+    pub fn aligned_alloc(
+        __alignment: ::std::os::raw::c_ulong,
+        __size: ::std::os::raw::c_ulong,
+    ) -> *mut ::std::os::raw::c_void;
 }
 extern "C" {
     pub fn abort() -> !;

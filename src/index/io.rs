@@ -18,10 +18,10 @@ pub use super::io_flags::IoFlags;
 /// This function returns an error if the description contains any byte with the value `\0` (since
 /// it cannot be converted to a C string), or if the internal index writing operation fails.
 pub fn write_index<I, P>(index: &I, file_name: P) -> Result<()>
-    where
-        I: NativeIndex,
-        I: CpuIndex,
-        P: AsRef<str>,
+where
+    I: NativeIndex,
+    I: CpuIndex,
+    P: AsRef<str>,
 {
     unsafe {
         let f = file_name.as_ref();
@@ -32,12 +32,18 @@ pub fn write_index<I, P>(index: &I, file_name: P) -> Result<()>
     }
 }
 
-pub fn seralize(index: &IndexImpl) -> Result<Vec<u8>> {
+pub fn serialize(index: &IndexImpl) -> Result<Vec<u8>> {
     unsafe {
         let mut size = 0;
+        let mut capacity = 0;
         let mut bytes = null_mut();
-        faiss_try(seralize_index(index.inner_ptr(), &mut bytes, &mut size))?;
-        let bytes = Vec::from_raw_parts(bytes as *mut u8, size, size);
+        faiss_try(serialize_index(
+            index.inner_ptr(),
+            &mut bytes,
+            &mut size,
+            &mut capacity,
+        ))?;
+        let bytes = Vec::from_raw_parts(bytes as *mut u8, size, capacity);
         Ok(bytes)
     }
 }
@@ -49,8 +55,8 @@ pub fn seralize(index: &IndexImpl) -> Result<Vec<u8>> {
 /// This function returns an error if the description contains any byte with the value `\0` (since
 /// it cannot be converted to a C string), or if the internal index reading operation fails.
 pub fn read_index<P>(file_name: P) -> Result<IndexImpl>
-    where
-        P: AsRef<str>,
+where
+    P: AsRef<str>,
 {
     unsafe {
         let f = file_name.as_ref();
@@ -68,7 +74,7 @@ pub fn read_index<P>(file_name: P) -> Result<IndexImpl>
 pub fn deserialize(bytes: &[u8]) -> Result<IndexImpl> {
     unsafe {
         let size = bytes.len() as usize;
-        let bytes = bytes.as_ptr() as *const i8;
+        let bytes = bytes.as_ptr() as *const u8;
         let mut inner = null_mut();
         faiss_try(deserialize_index(bytes, size, &mut inner))?;
         Ok(IndexImpl::from_inner_ptr(inner))
@@ -84,8 +90,8 @@ pub fn deserialize(bytes: &[u8]) -> Result<IndexImpl> {
 /// This function returns an error if the description contains any byte with the value `\0` (since
 /// it cannot be converted to a C string), or if the internal index reading operation fails.
 pub fn read_index_with_flags<P>(file_name: P, io_flags: IoFlags) -> Result<IndexImpl>
-    where
-        P: AsRef<str>,
+where
+    P: AsRef<str>,
 {
     unsafe {
         let f = file_name.as_ref();
@@ -130,7 +136,7 @@ mod tests {
     }
 
     #[test]
-    fn seralize_deseralize() {
+    fn serialize_deserialize() {
         let mut index = FlatIndex::new_l2(D).unwrap();
         assert_eq!(index.d(), D);
         assert_eq!(index.ntotal(), 0);
@@ -142,7 +148,7 @@ mod tests {
         index.add(some_data).unwrap();
         assert_eq!(index.ntotal(), 5);
 
-        let bytes = seralize(&index.upcast()).unwrap();
+        let bytes = serialize(&index.upcast()).unwrap();
         let index = deserialize(&bytes).unwrap();
         assert_eq!(index.ntotal(), 5);
     }

@@ -23,30 +23,7 @@ mod tests {
     #[test]
     fn getting_last_error() {
         unsafe {
-            // extern "C" {
-            //     pub fn seralize_index(
-            //         idx: *const FaissIndex,
-            //         p_out: *mut *mut ::std::os::raw::c_char,
-            //         p_size: *mut usize,
-            //     ) -> ::std::os::raw::c_int;
-            // }
-            // extern "C" {
-            //     pub fn deserialize_index(
-            //         data: *const ::std::os::raw::c_char,
-            //         size: usize,
-            //         p_out: *mut *mut FaissIndex,
-            //     ) -> ::std::os::raw::c_int;
-            // }
-            // extern "C" {
-            //     #[doc = " Write index to a file.\n This is equivalent to `faiss::write_index` when a file path is provided."]
-            //     pub fn faiss_write_index_fname(
-            //         idx: *const FaissIndex,
-            //         fname: *const ::std::os::raw::c_char,
-            //     ) -> ::std::os::raw::c_int;
-            // }
             let mut index_ptr: *mut FaissIndexFlatL2 = ptr::null_mut();
-            // seralize_index(index_ptr, ptr::null_mut(), ptr::null_mut());
-            faiss_write_index_fname(index_ptr, ptr::null());
             let desc = CString::new("noooo").unwrap();
             let c = faiss_index_factory(&mut index_ptr, 4, desc.as_ptr(), 0);
             assert_ne!(c, 0);
